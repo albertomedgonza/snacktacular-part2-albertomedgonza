@@ -32,3 +32,4 @@ class Spot {
         self.init(name: "", address: "", coordinate: CLLocationCoordinate2D(), averageRating: 0.0, numberOfReviews: 0, postingUserId: "", documentId: "")
     }
 }
+//testing
