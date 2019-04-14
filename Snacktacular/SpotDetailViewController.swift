@@ -184,8 +184,9 @@ extension SpotDetailViewController: CLLocationManagerDelegate {
                 self.updateUserInterface()
                 
         })
+    }
         func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
             print("Failed to get user location")
         }
 }
-}
+
