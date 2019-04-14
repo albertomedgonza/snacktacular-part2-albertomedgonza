@@ -25,6 +25,10 @@ class SpotsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_: )))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+        
         authUI = FUIAuth.defaultAuthUI()
         
         authUI.delegate = self
@@ -38,6 +42,7 @@ class SpotsListViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         getLocation()
+        navigationController?.setToolbarHidden(false, animated: false)
         spots.loadData {
             self.sortBasedOnSegmentPressed()
             self.tableView.reloadData()
@@ -62,7 +67,9 @@ class SpotsListViewController: UIViewController {
         
     }
     func showAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: "OK", style: .default, handler: nil)
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
         alertController.addAction(alertAction)
         present(alertController, animated: true, completion: nil)
     }

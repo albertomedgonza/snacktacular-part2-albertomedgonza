@@ -19,6 +19,8 @@ class SpotDetailViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var saveBarButton: UIBarButtonItem!
+    @IBOutlet weak var cancelBarButton: UIBarButtonItem!
     
     var spot: Spot!
     let regionDistance: CLLocationDistance = 750
@@ -33,6 +35,18 @@ class SpotDetailViewController: UIViewController {
         if spot == nil {
             spot = Spot()
             getLocation()
+            
+            nameField.addBorder(width: 0.5, radius: 5.0, color: .black)
+            addressField.addBorder(width: 0.5, radius: 5.0, color: .black)
+        } else {
+            nameField.isEnabled = false
+            addressField.isEnabled = false
+            nameField.backgroundColor = UIColor.clear
+            addressField.backgroundColor = UIColor.white
+            saveBarButton.title = ""
+            cancelBarButton.title = ""
+            
+            navigationController?.setToolbarHidden(true, animated: true)
         }
         
         
@@ -41,8 +55,19 @@ class SpotDetailViewController: UIViewController {
         updateUserInterface()
     }
     
+    @IBAction func textFielEditingChanged(_ sender: UITextField) {
+        saveBarButton.isEnabled = !(nameField.text == "")
+    }
+    
+    @IBAction func textFielReturnPressed(_ sender: UITextField) {
+        sender.resignFirstResponder()
+        spot.name = nameField.text!
+        spot.address = addressField.text!
+        updateUserInterface()
+    }
+    
     func showAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: "OK", style: .default, handler: nil)
+        let alertController = UIAlertController(title: "OK", message: .default, preferredStyle: nil)
         alertController.addAction(alertAction)
         present(alertController, animated: true, completion: nil)
     }
