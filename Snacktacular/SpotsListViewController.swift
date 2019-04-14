@@ -33,7 +33,10 @@ class SpotsListViewController: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.tableView.reloadData()
+        spots.loadData {
+            self.tableView.reloadData()
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
