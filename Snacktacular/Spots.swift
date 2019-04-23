@@ -18,10 +18,10 @@ class Spots {
     }
     
     func loadData(completed: @escaping () -> ()) {
-        db.collection("spots").addSnapshotistener { (querySnapshot, error) in
+        db.collection("spots").addSnapshotListener { (querySnapshot, error) in
             guard error == nil else {
                 print("***Error: adding the snapshot listener \(error!.localizedDescription)")
-                return completed
+                return completed()
             }
             self.spotArray = []
             for document in querySnapshot!.documents {

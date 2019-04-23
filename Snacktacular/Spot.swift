@@ -38,7 +38,7 @@ class Spot: NSObject, MKAnnotation {
     }
     
     var dictionary: [String: Any] {
-        return ["name": name, "address": address, "longitude": longitude, "latitude": latitude, "averageRating": averageRating, "numberOfReviews": numberOfReviews, "postingUserID": postingUserId]
+        return ["name": name, "address": address, "longitude": longitude, "latitude": latitude, "averageRating": averageRating, "numberOfReviews": numberOfReviews, "postingUserID": postingUserID]
     }
     
     init(name: String, address: String, coordinate: CLLocationCoordinate2D, averageRating: Double, numberOfReviews: Int, postingUserId: String, documentId: String) {
@@ -94,7 +94,7 @@ class Spot: NSObject, MKAnnotation {
                     completed(false)
                 } else {
                     print("new Document created with ref ID \(ref.documentID ?? "unknown")")
-                    completed(true) 
+                    completed(true)
                 }
             }
         }
