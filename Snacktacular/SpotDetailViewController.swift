@@ -23,8 +23,9 @@ class SpotDetailViewController: UIViewController {
     @IBOutlet weak var cancelBarButton: UIBarButtonItem!
     
     var spot: Spot!
+    var reviews: [Review] = []
     let regionDistance: CLLocationDistance = 750
-    var locationManager: CLLocationManager
+    var locationManager: CLLocationManager!
     var currentLocation: CLLocation!
     
     override func viewDidLoad() {
@@ -53,9 +54,31 @@ class SpotDetailViewController: UIViewController {
         }
         
         
-        let region = MKCoordinateRegion(spot.coordinate, regionDistance, regionDistance)
+        let region = MKCoordinateRegionWithDistance(spot.coordinate, regionDistance, regionDistance)
         mapView.setRegion(region, animated: true)
         updateUserInterface()
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        spot.name = nameField.text!
+        spot.address = addressField.text!
+        switch segue.identifier ?? "" {
+        case "AddReview" :
+            let navigationController = segue.destination as! UINavigationController
+            let destination = navigationController.viewControllers.first as! ReviewTableViewController
+            destination.spot = spot
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                tableView.deselectRow(at: selectedIndexPath, animated: true)
+            }
+            
+        case "ShowReview" :
+            let destination = segue.destination as! ReviewTableViewController
+            destination.spot = spot
+            let selectedIndexPath = tableView.indexPathForSelectedRow!
+            destination.review = reviews[selectedIndexPath.row]
+        default:
+            print("***Error: did not have segue in SpotDetailViewController prepare(for segue:)")
+        }
+        
     }
     
     @IBAction func textFielEditingChanged(_ sender: UITextField) {
