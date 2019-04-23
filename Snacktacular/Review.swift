@@ -42,34 +42,35 @@ class Review {
         let currentUserID = Auth.auth().currentUser?.email ?? "Unknown User"
         self.init(title: "", text: "", rating: 0, reviewerUserId: currentUserID, date: Date(), documentID: "")
     }
-}
-func saveData(spot: Spot, completion: @escaping (Bool) -> ()) {
-    let db = Firestore.firestore()
-    
-    let dataToSave = self.dictionary
-    
-    if self.documentID != "" {
-        let ref = db.collection("spots").document(spot.documentID).collection("reviews").document(self.documentID)
-        ref.setData(dataToSave) { (error) in
-            if let error = error {
-                print("*** Error updating document \(self.documentID) in spot \(self.documentID) \(error.localizedDescription)")
-                completed(false)
-            } else {
-                print("Document updated with ref ID \(ref.documentID)")
-                completed(true)
+
+    func saveData(spot: Spot, completion: @escaping (Bool) -> ()) {
+        let db = Firestore.firestore()
+        //create dictionary
+        let dataToSave = self.dictionary
+        // if we have saved a record well have a document id
+        if self.documentID != "" {
+            let ref = db.collection("spots").document(spot.documentID).collection("reviews").document(self.documentID)
+            ref.setData(dataToSave) { (error) in
+                if let error = error {
+                    print("*** Error updating document \(self.documentID) in spot \(self.documentID) \(error.localizedDescription)")
+                    completed(false)
+                } else {
+                    print("Document updated with ref ID \(ref.documentID)")
+                    completed(true)
+                }
+            }
+        } else {
+            var ref: DocumentReference? = nil
+            ref = db.collection("spots").document(spot.documentID).collection("reviews").addDocument(data: dataToSave) { error in
+                if let error = error {
+                    print("*** Error creating new document in spot \(self.documentID) for new documentID \(error.localizedDescription)")
+                    completed(false)
+                } else {
+                    print("new Document created with ref ID \(ref.documentID ?? "unknown")")
+                    completed(true)
+                }
             }
         }
-    } else {
-        var ref: DocumentReference? = nil
-        ref = db.collection("spots").document(spot.documentID).collection("reviews").addDocument(data: dataToSave) { error in
-            if let error = error {
-                print("*** Error creating new document in spot \(self.documentID) for new documentID \(error.localizedDescription)")
-                completed(false)
-            } else {
-                print("new Document created with ref ID \(ref.documentID ?? "unknown")")
-                completed(true)
-            }
-        }
+    
     }
-    
 }
