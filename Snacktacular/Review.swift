@@ -56,7 +56,10 @@ class Review {
                     completed(false)
                 } else {
                     print("Document updated with ref ID \(ref.documentID)")
-                    completed(true)
+                    spot.updateAverageRating {
+                        completed(true)
+                    }
+                    
                 }
             }
         } else {
@@ -67,7 +70,10 @@ class Review {
                     completed(false)
                 } else {
                     print("new Document created with ref ID \(ref.documentID ?? "unknown")")
-                    completed(true)
+                    spot.updateAverageRating {
+                        completed(true)
+                    }
+                    
                 }
             }
         }
@@ -83,7 +89,7 @@ class Review {
                 spot.updateAverageRating {
                     completed(true)
                 }
-}
-}
+            }
+        }
 }
 }
