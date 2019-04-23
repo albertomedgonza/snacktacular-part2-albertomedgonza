@@ -583,24 +583,12 @@
                                                         <action selector="reviewTitleChanged:" destination="mAk-mb-bNb" eventType="editingChanged" id="06D-MP-PIk"/>
                                                     </connections>
                                                 </textField>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="posted: Dec 23, 2019" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KMA-QY-4kE">
-                                                    <rect key="frame" x="192" y="5" width="175" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="175" id="G8c-tE-gON"/>
-                                                        <constraint firstAttribute="height" constant="21" id="wge-bo-eVe"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Italic" family="Avenir Next Condensed" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Vpb-OH-VVb" firstAttribute="leading" secondItem="qB2-BJ-VVM" secondAttribute="trailing" constant="8" id="0Yt-Ev-FaB"/>
-                                                <constraint firstAttribute="trailing" secondItem="KMA-QY-4kE" secondAttribute="trailing" constant="8" id="1Jl-Tx-jxf"/>
                                                 <constraint firstItem="qB2-BJ-VVM" firstAttribute="leading" secondItem="B4F-gf-Lk6" secondAttribute="leading" constant="8" id="8No-P8-CPA"/>
                                                 <constraint firstItem="qB2-BJ-VVM" firstAttribute="top" secondItem="B4F-gf-Lk6" secondAttribute="top" constant="5" id="DXc-ly-jqi"/>
                                                 <constraint firstAttribute="trailing" secondItem="Vpb-OH-VVb" secondAttribute="trailing" constant="8" id="MGM-7T-J2D"/>
-                                                <constraint firstItem="KMA-QY-4kE" firstAttribute="top" secondItem="B4F-gf-Lk6" secondAttribute="top" constant="5" id="PXD-1Y-oUp"/>
                                                 <constraint firstItem="Vpb-OH-VVb" firstAttribute="top" secondItem="B4F-gf-Lk6" secondAttribute="top" constant="5" id="Tl4-tU-5JM"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -623,7 +611,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="ryZ-Do-1nr"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3ft-QJ-SIH">
@@ -635,9 +623,21 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="posted: Dec 23, 2019" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KMA-QY-4kE">
+                                                    <rect key="frame" x="157" y="5" width="175" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="175" id="G8c-tE-gON"/>
+                                                        <constraint firstAttribute="height" constant="21" id="wge-bo-eVe"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Italic" family="Avenir Next Condensed" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="3ft-QJ-SIH" firstAttribute="leading" secondItem="mpF-K0-81R" secondAttribute="leading" constant="8" id="BHf-Kz-TIK"/>
+                                                <constraint firstAttribute="trailing" secondItem="KMA-QY-4kE" secondAttribute="trailing" constant="16" id="S6d-b5-0cf"/>
+                                                <constraint firstItem="KMA-QY-4kE" firstAttribute="top" secondItem="mpF-K0-81R" secondAttribute="top" constant="2" id="fk6-MB-p1c"/>
                                                 <constraint firstItem="8eJ-Ih-8tb" firstAttribute="top" secondItem="mpF-K0-81R" secondAttribute="top" constant="5" id="gGi-3P-HgO"/>
                                                 <constraint firstAttribute="trailing" secondItem="3ft-QJ-SIH" secondAttribute="trailing" constant="8" id="iTi-Db-tjV"/>
                                                 <constraint firstItem="3ft-QJ-SIH" firstAttribute="top" secondItem="8eJ-Ih-8tb" secondAttribute="bottom" constant="1" id="quG-vR-tjm"/>
@@ -685,12 +685,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="NYs-Uv-upU">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="aPh-f3-Pdh">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="aPh-f3-Pdh">
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="mAk-mb-bNb" id="JZG-1t-B1d"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="W3w-Gl-SGM">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="W3w-Gl-SGM">
                             <connections>
                                 <action selector="saveButtonPressed:" destination="mAk-mb-bNb" id="5E5-xN-aC7"/>
                             </connections>
@@ -704,8 +704,9 @@
                         <outlet property="deleteButton" destination="ICe-ir-FEg" id="ElR-TW-96j"/>
                         <outlet property="nameLabel" destination="oSJ-eJ-EoB" id="ZGi-S9-aeX"/>
                         <outlet property="postedByLabel" destination="SF7-5f-7aZ" id="ZnV-B3-MfA"/>
-                        <outlet property="reviewTitle" destination="Vpb-OH-VVb" id="iT5-Sg-dhM"/>
-                        <outlet property="reviewView" destination="3ft-QJ-SIH" id="h1S-Iv-4Qp"/>
+                        <outlet property="reviewDateLabel" destination="KMA-QY-4kE" id="9XL-bf-urb"/>
+                        <outlet property="reviewTextView" destination="3ft-QJ-SIH" id="h1S-Iv-4Qp"/>
+                        <outlet property="reviewTitleField" destination="Vpb-OH-VVb" id="iT5-Sg-dhM"/>
                         <outlet property="saveBarButton" destination="W3w-Gl-SGM" id="nJH-6G-591"/>
                         <outletCollection property="starButtonCollection" destination="Nmp-Iz-F0I" collectionClass="NSMutableArray" id="keL-3M-19S"/>
                         <outletCollection property="starButtonCollection" destination="hZa-1Z-c3q" collectionClass="NSMutableArray" id="DRn-4S-rNI"/>
